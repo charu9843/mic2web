@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VoiceWeb Tamil</title>
+
+  <!-- Google Identity script -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
   <style>
-    body {
+     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color:white;
       color: #333;
+      min-height: 100vh;  /* ensures footer is at bottom */
+      position: relative;
+
     }
 
     /* Header Section */
@@ -170,16 +177,20 @@
   <!-- Header -->
  
    <div class="header">
-  <h1>
-    <span style="color:#4285F4">V</span>
-    <span style="color:#EA4335">o</span>
-    <span style="color:#FBBC05">i</span>
-    <span style="color:#4285F4">c</span>
-    <span style="color:#34A853">e</span>
-    <span style="color:#EA4335">W</span>
-    <span style="color:#4285F4">e</span>
-    <span style="color:#EA4335">b</span>
-  </h1>
+    <h1>
+    <span style="color:#4285F4">M</span>
+    <span style="color:#EA4335">i</span>
+    <span style="color:#FBBC05">c</span>
+    <span style="color:#4285F4">2</span>
+    <span style="color:#34A853">W</span>
+     <span style="color:#EA4335">e</span>
+    <span style="color:#4285F4">b</span>
+    
+    <span style="color:#756e6e; font-size:20px;  letter-spacing:-1px; margin-left:10px;">(WIP)-This website is for a hackathon</span>
+
+   </h1>
+   
+  
 </div>
 
   <!-- Mic Section -->
@@ -188,9 +199,14 @@
       <div class="mic-btn" id="micBtn">
         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAACUCAMAAAC3HHtWAAAAaVBMVEX///8dHRsAAAD///0bGxkXFxXW1tY3NzbJycckJCLd3dtBQUD8/PyDg4EMDAkgIB6xsbHs7OylpaVRUVDOzs719fQFBQCZmZlcXFzDw8NtbW1GRkYSEg91dXSPj46JiYkrKyu6urplZWNJ2HtxAAAFHklEQVR4nO2cDXOiMBCGYQmgEBPDtxL8+v8/8rJJtEr1sM4Eejd556YKLcfTzWY3YdcGgZeXl5eX138n+vzk09OzShFQsWq7Pr+pO6zE8mBK2aEHAMYkkyjGGEC+SRZnE20KMgxDzkMrfBPD6SgWY1K+RIOsh9jA3ItzTiBN8AeWUKTuW6UsfCHOTrsgWgQsioIqZmNz3aFJ2C0BpsgCUTbfR/Ierc8WQaN0Ay/BuP7X7OsFwKJgBS/NdRWcFyG7NK9HUotwVi5htCQmExbjIZGr+cGi4mXAuENrDvOHtHpgf5mXFiyUl/mHU3Ry0mYqTS0QOLI8foOMnJLZyZL0LbL1avalmiKbcLMr2dx632Zzp3VP5sk8mSfzZJ7Mk3kyT+bJPJkn82SezJN5srEiGll9QHa9zA3ZDe0Tslpd5+p51fWX/ojMyhGb2KJWH5FRfa2r+l0FqE39CVnG8FpXhaiEEx7KwTyt/hEZDRJd7XH1ANKQXX5KplVJRQauyLI1CYnsxA/J9GiemTpg7shifML/Edm2CTkhlSMygTBxmnxAFrVSXbp2VbYQqcTaw+6HZKh6QLKTI7KIllINCSv0UdbHfLogEKeVthnWgrjMXRWhog6LYLDRB+peb1QqsGCNZBlamJWOUkAUDAx7Csz//0atLtS1OjM18YDt3YApshZLmjHg5KTv1DdVbG1Nz8YBS+7N0RnZGZSZuI2XKu5OghFZmZaTEg3cbJ2RGRgYzNEAk6PJOuNZmW4G4BhvXLhaFIgeyVSsVWbA3oMpoxE4I0kUbPGXILmrcBahmfCG9n70MNUWAUONbhbVHfok2ztcORaapbG3EN1f0XijEpk2WaWNCxgIXcFlegBJaB0m0w1Lr9pcGLeZKdgYUzstqfcaBTaRQatyQNDnFjut9LSMgowQhc9Kh3uUQA0nWsjU7bGZUej+sydmi0ElSY2C/UOYx9RguiTLet2g19jlo4Lb9jAKuYqCQV7Qq1Odpe7csHnKlejGYCgD0MiE96wtcYnfMKtGHZTtl0+JUpOxI3U6mkGyRrfiMUuC6/aR1tl26Mq+L7W6fZHU1ymoXvdm1igHcLxZP2hP011v7+xsaQu6GQ3awOUuHSVOpuuGqf2AudNzPnu2MJNDprVzsmBn17Jw3/IzorsNZmtbR/nO7ZMNczccT9zfNfnrja2ZmGLDCMY7HEv3UoFir9FUkG+OmYlYT3+y3uVwzZ9zPENDU1y0Vys6FbbECzRa7bGnlZvEPsNDND1MmMo1Wijj/PgsHdLt5cSIBiOwn6lRGpMSPYTWHioNQXjcVpmojYRIzoWKvYoLPZ+z9Rw+doe35XBLRhJgnZeX/X4Y9peuTBmw214UTuc5+8/Qr7JNbNe0OsfH0iYnKb9azAnwg5i1M45SZNsNBMdsvPqxLyqqAB9cPciYAkwOJY7c4wIN3YvEDbDykC348QVRtUNO9FLDWkyvNWQ/FNVyH12wqrNkVwxlbh5zkLQcil3yOz6IYsW054M5+BVgGkIl6zjWYXVpnG+KgibGefnryJTN9Ggqmy3y2ZPXuiP7ZfJk77E8SpPh3Bx/w/Uae1pmffHdZrOTrYbNg45m4dMcH09vzrNP1gJGsuuM8enjAmT8oR7Av17vT8NhAbJny7Kx+CJkbxQqFiKLZTytBci2af6O0nZ2MpG9J+GsF8LLy8vLy8vLy8vLy8vLy8vLy8vrnxS9e0N138H4G/odvXYPjr7c3tOHi6b/BN8fOOlRJLK0VmcAAAAASUVORK5CYII=" alt="Mic">
       </div>
-       <button id="stopBtn" style="display:none; margin-top:10px; padding:10px 20px; background:#ff3333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
-    Stop Mic
-    </button>
+     
+        <button id="stopBtn" style="display:none; margin-top:10px; padding:10px 20px; background:#ff3333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+    Stop Mic</button>
+
+        <div id="signinBox" style="display:none;">
+  <div id="g_id_signin"></div>
+</div>
+
       <p>Tap the microphone to initiate voice commands and effortlessly create and auto-deploy your website.</p>
     </div>
    
@@ -234,53 +250,60 @@
 
    
 
-<!-- Sticky Footer -->
-<footer style="position: fixed; bottom: 0; left: 0; width: 100%; text-align: center; padding: 10px; background-color: #222; color: white; font-size: 14px;">
-  © 2025 Copyright. This is a learning platform. 
-</footer>
 
 
+  
+   
   <!-- Script -->
   <script>
-     const micBtn = document.getElementById("micBtn");
+    /******** DOM references ********/
+    const micBtn = document.getElementById("micBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const signinBox = document.getElementById("signinBox");
     const progressBar = document.getElementById("progress-bar");
+    const statusSection = document.querySelector(".status-section");
 
+    /******** State ********/
+    let recognition;
+    let finalTamilText = "";
+    let userSignedIn = false;
+
+    /******** Helpers ********/
     function updateProgress(value, text) {
       progressBar.style.width = value + "%";
       progressBar.textContent = text || value + "%";
     }
-      function showPreview() {
+
+    function showPreview() {
       const iframe = document.getElementById('preview-iframe');
-      iframe.src = '/preview/index.html'; // load preview site
+      iframe.src = '/preview/index.html';
       document.getElementById('preview-container').style.display = 'block';
       document.getElementById('editor-toolbar').style.display = 'block';
-
       iframe.onload = () => {
         populateImageDropdown();
+        disableTextEdit();
       };
     }
 
-    // Enable inline text editing
+    // small utility functions (kept same)
     function enableTextEdit() {
       const iframeDoc = document.getElementById('preview-iframe').contentDocument;
       iframeDoc.body.contentEditable = true;
       alert("✏️ You can now edit text directly inside the preview.");
     }
-
-    // Change background color
+    function disableTextEdit() {
+      const iframeDoc = document.getElementById('preview-iframe').contentDocument;
+      iframeDoc.body.contentEditable = false;
+    }
     function changeBackground(color) {
       const iframeDoc = document.getElementById('preview-iframe').contentDocument;
       iframeDoc.body.style.backgroundColor = color;
     }
-
-    // Populate dropdown with images
     function populateImageDropdown() {
       const iframeDoc = document.getElementById('preview-iframe').contentDocument;
       const imgs = iframeDoc.querySelectorAll("img");
       const dropdown = document.getElementById("image-selector");
-
-      dropdown.innerHTML = ""; // clear old
-
+      dropdown.innerHTML = "";
       if (imgs.length === 0) {
         const opt = document.createElement("option");
         opt.text = "No images found";
@@ -288,7 +311,6 @@
         dropdown.add(opt);
         return;
       }
-
       imgs.forEach((img, index) => {
         const opt = document.createElement("option");
         opt.value = index;
@@ -296,203 +318,242 @@
         dropdown.add(opt);
       });
     }
-
-    // Replace selected image
     function replaceImage(event) {
       const file = event.target.files[0];
       if (!file) return;
-
       const reader = new FileReader();
       reader.onload = function(e) {
         const iframeDoc = document.getElementById('preview-iframe').contentDocument;
         const imgs = iframeDoc.querySelectorAll("img");
-
         const selectedIndex = document.getElementById('image-selector').value;
         if (selectedIndex === "") {
           alert("❌ Please select an image first.");
           return;
         }
-
         const img = imgs[selectedIndex];
-        if (img) {
-          img.src = e.target.result;
-        } else {
-          alert("❌ No image found at that slot.");
-        }
+        if (img) img.src = e.target.result;
+        else alert("❌ No image found at that slot.");
       };
       reader.readAsDataURL(file);
     }
-
-    // Handle dropdown actions
     function handleEditorAction(action) {
-      if (action === "editText") {
-        enableTextEdit();
-      } 
-      else if (action === "changeBackground") {
-        document.getElementById("bgColorPicker").click();
-      } 
+      if (action === "editText") enableTextEdit();
+      else if (action === "changeBackground") document.getElementById("bgColorPicker").click();
       else if (action === "replaceImage") {
-        document.getElementById("image-selector").style.display = "inline-block"; 
+        document.getElementById("image-selector").style.display = "inline-block";
         document.getElementById("imageUploader").click();
       }
       document.getElementById("editor-options").value = "";
     }
 
+    /******** Google Sign-In (renders button but keeps it hidden) ********/
+    window.onload = function() {
+      // replace this client_id if necessary
+      google.accounts.id.initialize({
+        client_id: "1041434272397-s2dh3sh4mc9f0o2njk48ktnrlo5qs05d.apps.googleusercontent.com",
+        callback: handleCredentialResponse,
+        auto_select: false
+      });
 
-    if ('webkitSpeechRecognition' in window) {
-      const recognition = new webkitSpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = 'ta-IN'; // Tamil recognition
-      const stopBtn = document.getElementById("stopBtn");
+      // Render button into the g_id_signin div inside signinBox
+      google.accounts.id.renderButton(
+        document.getElementById("g_id_signin"),
+        { theme: "outline", size: "large" }
+      );
 
-      let finalTamilText = "";
-
-    micBtn.addEventListener('click', () => {
-      recognition.start();
-      updateProgress(10, "Listening...");
-      stopBtn.style.display = "inline-block"; 
-      document.querySelector(".status-section").style.display = "block";
-    });
-
-    stopBtn.addEventListener('click', () => {
-      recognition.stop();
-      progressBar.textContent = "Stopped";
-      progressBar.style.background = "#00cc44";
-      stopBtn.style.display = "none"; 
-    });
-
-    recognition.onresult = (event) => {
-      finalTamilText = "";
-      for (let i = 0; i < event.results.length; i++) {
-        finalTamilText += event.results[i][0].transcript;
-      }
+      // keep signinBox hidden until mic click shows it
+      signinBox.style.display = "none";
     };
 
-    recognition.onend = () => {
-      // auto-restart logic if user hasn’t clicked stop
-      if (stopBtn.style.display === "inline-block") {
-        recognition.start();
-        return;
+    function handleCredentialResponse(response) {
+      // user successfully signed in with Google
+      console.log("✅ Google login success:", response);
+      userSignedIn = true;
+      signinBox.style.display = "none";    // hide the google button
+      startMic();                          // auto-start mic after login
+    }
+
+    /******** Speech recognition setup ********/
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'ta-IN';
+
+      // When user clicks the mic:
+      micBtn.addEventListener('click', () => {
+        if (!userSignedIn) {
+          // show the google sign-in button next to mic
+          signinBox.style.display = "inline-block";
+          return;
+        }
+        // already signed in → start mic
+        startMic();
+      });
+
+      // Stop button handler
+      stopBtn.addEventListener('click', () => {
+        recognition.stop();
+        // hide stop btn — the onend handler will proceed with processing
+        stopBtn.style.display = "none";
+        console.log("🛑 Mic manually stopped by user");
+      });
+
+      // helper to start mic and show stop button (keeps UI similar to your original)
+      function startMic() {
+        try {
+          recognition.start();
+        } catch (e) {
+          // some browsers throw if start called while already starting; ignore
+          console.warn("start() call warning:", e);
+        }
+        stopBtn.style.display = "inline-block";
+        console.log("🎤 Mic started");
+        // don't display status-section yet; we'll show it after user stops
+        updateProgress(10, "Listening...");
       }
 
-      stopBtn.style.display = "none";
+      // onresult — capture transcript (keeps same approach you used)
+      recognition.onresult = (event) => {
+        finalTamilText = "";
+        for (let i = 0; i < event.results.length; i++) {
+          finalTamilText += event.results[i][0].transcript;
+        }
+        // keep console debug
+        console.log("✅ Speech captured:", finalTamilText);
+      };
 
-      if (finalTamilText.trim() === "") return;
+      // onend — called when recognition stops (manually or naturally)
+      recognition.onend = () => {
+        // if stop button still visible it means we intended to keep listening (auto-restart)
+        if (stopBtn.style.display === "inline-block") {
+          // restart (continuous listening behaviour)
+          recognition.start();
+          return;
+        }
 
-      document.getElementById("view-site-btn").style.display = 'none';
-      document.getElementById("download-btn").style.display = 'none';
+        // user actually stopped: proceed only if we have text
+        if (finalTamilText.trim() === "") {
+          console.log("No speech captured.");
+          return;
+        }
 
-      let processingTimeout = setTimeout(() => {  
-        updateProgress(30, "Processing...");
-      }, 1500); 
+        // show status UI and run backend pipeline
+        statusSection.style.display = "block";
+        document.getElementById("view-site-btn").style.display = 'none';
+        document.getElementById("download-btn").style.display = 'none';
 
-      // Step 1: Send to /intent
-      fetch('/intent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tamilText: finalTamilText })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
+        let processingTimeout = setTimeout(() => {
+          updateProgress(30, "Processing...");
+        }, 1500);
+
+        // Step 1: /intent
+        fetch('/intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tamilText: finalTamilText })
+        })
+        .then(res => res.json())
+        .then(data => {
+          if (!data.success) throw new Error("Intent detection failed");
           updateProgress(50, 'Intent detected');
 
           processingTimeout = setTimeout(() => {
             updateProgress(60, "Processing...");
           }, 1500);
 
-          // Step 2: Send to /generate-code
+          // Step 2: /generate-code
           return fetch('/generate-code', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ intent: data.intent })
           });
-        } else {
-          throw new Error("Intent detection failed");
-        }
-      })
-      .then(res => res.json())
-      .then(data => {
-        clearTimeout(processingTimeout);
-
-        if (data.success) {
+        })
+        .then(res => res.json())
+        .then(data => {
+          clearTimeout(processingTimeout);
+          if (!data.success) throw new Error("Code generation failed");
           updateProgress(80, 'Code generated');
           document.getElementById("view-site-btn").style.display = 'inline-block';
           document.getElementById("download-btn").style.display = 'inline-block';
           updateProgress(100, 'Ready to view and download');
-        } else {
-          updateProgress(0, 'Failed');
-        }
-      })
-      .catch(err => {
-        console.error(err);
+        })
+        .catch(err => {
+          console.error(err);
+          updateProgress(0, 'Error');
+        });
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
         updateProgress(0, 'Error');
-      });
-    };
+        stopBtn.style.display = "none";
+      };
 
-    recognition.onerror = (event) => {
-      console.error("Speech recognition error:", event.error);
-      updateProgress(0, 'Error');
-      stopBtn.style.display = "none"; 
-    };
-
-  } else {
-    alert("Speech Recognition not supported in this browser");
-  }
-
-
-
-// Save edits to server
-function saveEdits() {
-  const iframeDoc = document.getElementById('preview-iframe').contentDocument;
-  const updatedHtml = iframeDoc.documentElement.outerHTML;
-
-  fetch('/save-edits', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ filename: 'index.html', content: updatedHtml })
-  })
-  .then(res => res.json())
-  .then(data => alert(data.message))
-  .catch(err => alert("❌ Error saving changes"));
-}
-
-async function deployWebsite() {
-  try {
-    const newTab = window.open('', '_blank');
-    // Save current edits first
-    const iframeDoc = document.getElementById('preview-iframe').contentDocument;
-    const updatedHtml = iframeDoc.documentElement.outerHTML;
-
-    await fetch('/save-edits', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ filename: 'index.html', content: updatedHtml })
-    });
-
-    // Deploy saved files to Azure
-    const res = await fetch('/deploy', { method: 'POST' });
-    const data = await res.json();
-
-     if (data.message && data.url) {
-      alert(`✅ ${data.message}\nLive URL: ${data.url}`);
-      // Open live site in new tab
-      newTab.location.href = data.url;
-      
     } else {
-      alert('❌ Deployment failed');
+      alert("Speech Recognition not supported in this browser");
     }
-  } catch (err) {
-    console.error(err);
-    alert('❌ Error deploying website');
-  }
-}
 
-  function downloadSite() {
-    window.location.href = '/download';
-  }
-</script>
+    /******** Save / Deploy / Download (unchanged) ********/
+    function saveEdits() {
+      const iframeDoc = document.getElementById('preview-iframe').contentDocument;
+      const updatedHtml = iframeDoc.documentElement.outerHTML;
 
+      fetch('/save-edits', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: 'index.html', content: updatedHtml })
+      })
+      .then(res => res.json())
+      .then(data => alert(data.message))
+      .catch(err => alert("❌ Error saving changes"));
+    }
+
+    async function deployWebsite() {
+      try {
+        disableTextEdit();
+
+        // Save current edits first
+        const iframeDoc = document.getElementById('preview-iframe').contentDocument;
+        const updatedHtml = iframeDoc.documentElement.outerHTML;
+
+        await fetch('/save-edits', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename: 'index.html', content: updatedHtml })
+        });
+
+        // Deploy saved files to Azure
+        const newTab = window.open('', '_blank');
+        const res = await fetch('/deploy', { method: 'POST' });
+        const data = await res.json();
+
+        if (data.message && data.url) {
+          alert(`✅ ${data.message}\nLive URL: ${data.url}`);
+          // Open live site in new tab
+          newTab.location.href = data.url;
+        } else {
+          alert('❌ Deployment failed');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('❌ Error deploying website');
+      }
+    }
+
+    function downloadSite() {
+      window.location.href = '/download';
+    }
+
+    // Expose functions used in markup
+    window.saveEdits = saveEdits;
+    window.deployWebsite = deployWebsite;
+    window.downloadSite = downloadSite;
+    window.showPreview = showPreview;
+    window.handleEditorAction = handleEditorAction;
+    window.changeBackground = changeBackground;
+    window.replaceImage = replaceImage;
+  </script>
 </body>
 </html>

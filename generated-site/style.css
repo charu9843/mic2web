@@ -1,3 +1,15 @@
-body {
+html {
     scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+h1, h2, h3 {
+    color: #2d3748;
+}
+
+button {
+    transition: background-color 0.3s ease;
 }

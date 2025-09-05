@@ -1,7 +1,7 @@
 {
-  "name": "ration-shop-website",
+  "name": "my-website",
   "version": "1.0.0",
-  "description": "A simple website for a ration shop",
+  "description": "A simple responsive website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
